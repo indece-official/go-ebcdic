@@ -2,7 +2,7 @@
 Go-Package for transconding EBCDIC <-> Unicode / UTF8 / ISO 8859-1
 
 Features:
-* Supports multiple code pages
+* Supports multiple code pages (including Euro-Patches)
 * Characters that are not included in EBCDIC code page are replaced with `0x00`
 
 ## Usage
@@ -39,9 +39,11 @@ func myDecode() {
 ```
 
 ## Supported code pages
-Don't known which code page you have to use? The most common one is EBCDIC037 ;)
+Don't known which code page you have to use? The most common one used is EBCDIC037 ;-)
 
-| Code Page | Countries | Source |
-| --- | --- | --- |
-| **EBCDIC037** | AUS, CAN, NZL, PRT, ZAF, USA | Based on https://en.wikipedia.org/wiki/EBCDIC_037 |
-| EBCDIC273 | DEU, AUT | Based on https://en.wikipedia.org/wiki/EBCDIC_273 |
+| Code Page | Countries | Source | Comment |
+| --- | --- | --- | --- |
+| **EBCDIC037** | AUS, CAN, NZL, PRT, ZAF, USA | See https://en.wikipedia.org/wiki/EBCDIC_037 |
+| EBCDIC273 | DEU, AUT | See https://en.wikipedia.org/wiki/EBCDIC_273 |
+| EBCDIC1140 | AUS, CAN, NZL, PRT, ZAF, USA | See https://en.wikipedia.org/wiki/EBCDIC_1140 | EBCDIC037 with Euro-Patch |
+| EBCDIC1141 | DEU, AUT | See https://en.wikipedia.org/wiki/EBCDIC_1141 | EBCDIC273 with Euro-Patch |

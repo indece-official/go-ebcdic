@@ -16,10 +16,12 @@ const mapLength = 0xFF
  * Supported code pages:
  *    * EBCDIC037
  *	  * EBCDIC273
+ *    * EBCDIC1140
+ *    * EBCDIC1141
  **/
 func Encode(unicodeStr string, codePage int) ([]byte, error) {
-	ebcdicMap, ok := mapsUnicodeToEBDIC[codePage]
-	if ! ok {
+	ebcdicMap, ok := mapsUnicodeToEBCDIC[codePage]
+	if !ok {
 		return nil, errors.New("Unknown code page")
 	}
 
@@ -28,17 +30,23 @@ func Encode(unicodeStr string, codePage int) ([]byte, error) {
 	var ebcdic []byte
 
 	for _, r := range runes {
-		/* If outside of map, replace with 0x00 */
-		if r > mapLength {
+		switch {
+		case ebcdicMap.HasEuroPatch && r == '€':
+			/* Apply EURO-Patch (character outside of mapLength) */
+			ebcdic = append(ebcdic, ebcdicMap.EuroChar)
+			break
+		case r <= mapLength:
+			ebcdic = append(ebcdic, ebcdicMap.Map[r])
+			break
+		default:
+			/* If outside of map, replace with 0x00 */
 			ebcdic = append(ebcdic, 0)
-		} else {
-			ebcdic = append(ebcdic, ebcdicMap[r])
+			break
 		}
 	}
 
 	return ebcdic, nil
 }
-
 
 /**
  * Decode EBCDIC byte array to unicode string
@@ -46,17 +54,23 @@ func Encode(unicodeStr string, codePage int) ([]byte, error) {
  * Supported code pages:
  *    * EBCDIC037
  *	  * EBCDIC273
+ *	  * EBCDIC1140
+ *	  * EBCDIC1141
  **/
 func Decode(ebcdic []byte, codePage int) (string, error) {
-	ebcdicMap, ok := mapsEBDICToUnicode[codePage]
-	if ! ok {
+	ebcdicMap, ok := mapsEBCDICToUnicode[codePage]
+	if !ok {
 		return "", errors.New("Unknown code page")
 	}
 
 	buf := make([]rune, len(ebcdic))
-    for i, b := range ebcdic {
-        buf[i] = rune(ebcdicMap[b])
+	for i, b := range ebcdic {
+		if ebcdicMap.HasEuroPatch && b == ebcdicMap.EuroChar {
+			buf[i] = '€'
+		} else {
+			buf[i] = ebcdicMap.Map[b]
+		}
 	}
-	
-    return string(buf), nil
+
+	return string(buf), nil
 }
