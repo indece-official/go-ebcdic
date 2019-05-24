@@ -1,5 +1,5 @@
 # go-ebcdic
-Go-Package for transconding EBCDIC <-> Unicode / UTF8 / ISO 8859-1
+Go-Package for transcoding EBCDIC <-> Unicode / UTF8 / ISO 8859-1
 
 Features:
 * Supports multiple code pages
