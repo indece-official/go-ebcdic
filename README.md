@@ -1,16 +1,16 @@
 # go-ebcdic
-Go-Package for transcoding EBCDIC <-> Unicode / UTF8 / ISO 8859-1
+Go-Package for transcoding EBCDIC ↔ Unicode / UTF8
 
 [![GoDoc](https://godoc.org/github.com/indece-official/go-ebcdic?status.svg)](https://godoc.org/github.com/indece-official/go-ebcdic)
 
 Features:
 * Supports multiple code pages (including Euro-Patches)
-* Characters that are not included in EBCDIC code page are replaced with `0x00`
+* Optimized performance
 
 ## Usage
 Install:
 ```
-go get github.com/indece/go-ebcdic
+go get github.com/indece-official/go-ebcdic
 ```
 
 Use it in your code:
@@ -41,7 +41,7 @@ func myDecode() {
 ```
 
 ## Supported code pages
-Don't known which code page you have to use? The most common one used is EBCDIC037 ;-)
+Don't known which code page you have to use? The one most commonly used ist EBCDIC037 ;-)
 
 | Code Page | Countries | Source | Comment |
 | --- | --- | --- | --- |
