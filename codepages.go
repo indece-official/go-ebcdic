@@ -1,9 +1,16 @@
 package ebcdic
 
 const (
-	EBCDIC037  = 37
-	EBCDIC273  = 273
+	// EBCDIC037 specifies EBCDIC CCSID 037 (AUS, CAN, NZL, PRT, ZAF, USA)
+	EBCDIC037 = 37
+
+	// EBCDIC273 specifies EBCDIC CCSID 273 (DEU, AUT)
+	EBCDIC273 = 273
+
+	// EBCDIC1140 specifies EBCDIC CCSID 1140 with Euro-Patch (AUS, CAN, NZL, PRT, ZAF, USA)
 	EBCDIC1140 = 1140
+
+	// EBCDIC1141 specifies EBCDIC CCSID 1141 with Euro-Patch (DEU, AUT)
 	EBCDIC1141 = 1141
 )
 
@@ -20,16 +27,12 @@ type unicodeToEbcdicMap struct {
 }
 
 var (
-	/**
-	 * ECBDIC to unicode maps
-	 **/
+	// ECBDIC to unicode maps
 	mapsEBCDICToUnicode = map[int]ebcdicToUnicodeMap{
 
-		/**
-		 * EBCDIC 037 (AUS, CAN, NZL, PRT, ZAF, USA)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_037
-		 **/
+		// EBCDIC 037 (AUS, CAN, NZL, PRT, ZAF, USA)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_037
 		EBCDIC037: {
 			HasEuroPatch: false,
 			Map: []rune{
@@ -52,11 +55,9 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 273 (DEU, AUT)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_273
-		 **/
+		// EBCDIC 273 (DEU, AUT)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_273
 		EBCDIC273: {
 			HasEuroPatch: false,
 			Map: []rune{
@@ -79,13 +80,10 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 1140 (AUS, CAN, NZL, PRT, ZAF, USA)
-		 *
-		 * (EBCDIC 037 with EURO-Patch)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_037
-		 **/
+		// EBCDIC 1140 (AUS, CAN, NZL, PRT, ZAF, USA)
+		// (EBCDIC 037 with EURO-Patch)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_037
 		EBCDIC1140: {
 			HasEuroPatch: true,
 			EuroChar:     0x9F,
@@ -109,13 +107,10 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 1141 (DEU, AUT)
-		 *
-		 * (EBCDIC 273 with EURO-Patch)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_273
-		 **/
+		// EBCDIC 1141 (DEU, AUT)
+		// (EBCDIC 273 with EURO-Patch)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_273
 		EBCDIC1141: {
 			HasEuroPatch: true,
 			EuroChar:     0x9F,
@@ -140,16 +135,12 @@ var (
 		},
 	}
 
-	/**
-	 * Unicode to ECBDIC maps
-	 **/
+	// Unicode to ECBDIC maps
 	mapsUnicodeToEBCDIC = map[int]unicodeToEbcdicMap{
 
-		/**
-		 * EBCDIC 037 (AUS, CAN, NZL, PRT, ZAF, USA)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_037
-		 **/
+		// EBCDIC 037 (AUS, CAN, NZL, PRT, ZAF, USA)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_037
 		EBCDIC037: unicodeToEbcdicMap{
 			HasEuroPatch: false,
 			Map: []byte{
@@ -172,11 +163,9 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 273 (DEU, AUT)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_273
-		 **/
+		// EBCDIC 273 (DEU, AUT)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_273
 		EBCDIC273: unicodeToEbcdicMap{
 			HasEuroPatch: false,
 			Map: []byte{
@@ -199,13 +188,10 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 1140 (AUS, CAN, NZL, PRT, ZAF, USA)
-		 *
-		 * (EBCDIC 037 with EURO-Patch)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_037
-		 **/
+		// EBCDIC 1140 (AUS, CAN, NZL, PRT, ZAF, USA)
+		// (EBCDIC 037 with EURO-Patch)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_037
 		EBCDIC1140: unicodeToEbcdicMap{
 			HasEuroPatch: true,
 			EuroChar:     0x9F,
@@ -229,13 +215,10 @@ var (
 			},
 		},
 
-		/**
-		 * EBCDIC 1141 (DEU, AUT)
-		 *
-		 * (EBCDIC 273 with EURO-Patch)
-		 *
-		 * Based on https://en.wikipedia.org/wiki/EBCDIC_273
-		 **/
+		// EBCDIC 1141 (DEU, AUT)
+		// (EBCDIC 273 with EURO-Patch)
+		//
+		// Based on https://en.wikipedia.org/wiki/EBCDIC_273
 		EBCDIC1141: unicodeToEbcdicMap{
 			HasEuroPatch: true,
 			EuroChar:     0x9F,

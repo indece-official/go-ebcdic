@@ -1,6 +1,8 @@
 # go-ebcdic
 Go-Package for transcoding EBCDIC <-> Unicode / UTF8 / ISO 8859-1
 
+[![GoDoc](https://godoc.org/github.com/indece-official/go-ebcdic?status.svg)](https://godoc.org/github.com/indece-official/go-ebcdic)
+
 Features:
 * Supports multiple code pages (including Euro-Patches)
 * Characters that are not included in EBCDIC code page are replaced with `0x00`
