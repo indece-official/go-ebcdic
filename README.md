@@ -2,7 +2,7 @@
 
 Go-Package for transcoding EBCDIC ↔ Unicode / UTF8
 
-[![GoDoc](https://godoc.org/github.com/indece-official/go-ebcdic?status.svg)](https://godoc.org/github.com/indece-official/go-ebcdic)
+[![GoDoc](https://godoc.org/github.com/indece-official/go-ebcdic?status.svg)](https://godoc.org/github.com/indece-official/go-ebcdic) [![Go](https://github.com/indece-official/go-ebcdic/actions/workflows/go.yml/badge.svg)](https://github.com/indece-official/go-ebcdic/actions/workflows/go.yml)
 
 Features:
 
