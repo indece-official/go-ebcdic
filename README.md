@@ -1,6 +1,6 @@
 # go-ebcdic
 
-Go-Package for transcoding EBCDIC ↔ Unicode / UTF8
+Go-Package & tool for transcoding EBCDIC ↔ Unicode / UTF8
 
 [![GoDoc](https://godoc.org/github.com/indece-official/go-ebcdic?status.svg)](https://godoc.org/github.com/indece-official/go-ebcdic) [![Go](https://github.com/indece-official/go-ebcdic/actions/workflows/go.yml/badge.svg)](https://github.com/indece-official/go-ebcdic/actions/workflows/go.yml)
 
@@ -9,7 +9,38 @@ Features:
 - Supports multiple code pages (including Euro-Patches)
 - Optimized performance
 
-## Usage
+## Usage as binary
+
+### Setup
+Download the binaries and you are ready to go
+
+### ebcdictoutf8
+```
+Usage of ebcdictoutf8:
+  -c string
+        EBCDIC-Codepage to use (supported: 037 / 273 / 500 / 1140 / 1141 / 1148) (default "037")
+  -i string
+        Input ebcdic file (use '-' for stdin) (default "-")
+  -o string
+        Output utf8 file (use '-' for stdout) (default "-")
+  -version
+        Print version and quit with exit code 0
+```
+
+### utf8toebcdic
+```
+Usage of utf8toebcdic:
+  -c string
+        EBCDIC-Codepage to use (supported: 037 / 273 / 500 / 1140 / 1141 / 1148) (default "037")
+  -i string
+        Input utf8 file (use '-' for stdin) (default "-")
+  -o string
+        Output ebcdic file (use '-' for stdout) (default "-")
+  -version
+        Print version and quit with exit code 0
+```
+
+## Usage as golang-package
 
 Install:
 
@@ -57,3 +88,16 @@ Don't known which code page you have to use? The one most commonly used ist EBCD
 | EBCDIC1140    | AUS, CAN, NZL, PRT, ZAF, USA | See https://en.wikipedia.org/wiki/EBCDIC_1140      | EBCDIC037 with Euro-Patch |
 | EBCDIC1141    | DEU, AUT                     | See https://en.wikipedia.org/wiki/EBCDIC_1141      | EBCDIC273 with Euro-Patch |
 | EBCDIC1148    | International                | See https://en.wikipedia.org/wiki/Code_page_37#500 | EBCDIC500 with Euro-Patch |
+
+## Development
+### Snapshot build
+
+```
+$> make --always-make
+```
+
+### Release build
+
+```
+$> BUILD_VERSION=1.0.0 make --always-make
+```
